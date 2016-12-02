@@ -1,0 +1,47 @@
+<!DOCTYPE>
+<html ng-app="ContactListApp">
+  <head>
+    <title>Contact List App</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="assets/styles/app.css">
+  </head>
+
+  <body>
+    <div class="container" ng-controller="AppCtrl">
+      <h1>{{title}}</h1>
+      <div class="col-xs-4 contact-details">
+        <input type="text" class="form-control" ng-model="contact.name" placeholder="Enter Name" />
+        <input type="text" class="form-control" ng-model="contact.email"  placeholder="Enter Email"/>
+        <input type="text" class="form-control" ng-model="contact.number"  placeholder="Enter Number"/>
+        <button class="btn btn-primary" ng-click="onAddContact()">Add</button>
+        <button class="btn btn-info" ng-click="onUpdateContact()">Update</button>
+        <button class="btn btn-info" ng-click="onCearContact()">Clear</button>
+      </div>
+      <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="contact in contactList">
+              <td>{{contact.name}}</td>
+              <td>{{contact.email}}</td>
+              <td>{{contact.number}}</td>
+              <td>
+                <button class="btn btn-danger" ng-click="onRemoveContact(contact._id)">Remove</button>
+                <button class="btn btn-warning" ng-click="onSelectEditContact(contact)">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.1/angular.min.js"></script>
+    <script type="text/javascript" src="scripts/controllers/app-controller.js"></script>
+  </body>
+</html>
